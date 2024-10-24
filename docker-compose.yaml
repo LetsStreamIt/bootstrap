@@ -1,0 +1,38 @@
+x-common-variables: &common-variables
+    PROFILE_SERVICE_HOSTNAME: profile-service
+    PROFILE_SERVICE_PORT: 8080
+    AUTH_SERVICE_HOSTNAME: auth-service
+    AUTH_SERVICE_PORT: 3000
+
+services:
+  mongodb-service:
+    hostname: mongodb-service
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+  
+  session-service:
+    hostname: session-service
+    image: session-service
+    container_name: session-service
+    restart: always
+    environment:
+      PORT: 4000
+      <<: *common-variables
+ 
+  frontend-service:
+    hostname: frontend-service
+    image: frontend-service
+    container_name: frontend-service
+    restart: always
+    environment:
+      PORT: 80
+      <<: *common-variables
+     
+          
