@@ -1,5 +1,5 @@
 x-common-variables: &common-variables
-    MONGO_URI: mongodb://localhost:27017/auth_db
+    MONGO_URI: mongodb://localhost:27017/
     JWT_SECRET: supersecret
     PROFILE_SERVICE_URI: http://profile-service:8080
     AUTH_SERVICE_URI: http://profile-service:3000
@@ -37,7 +37,7 @@ services:
 
   auth-service:
     hostname: auth-service
-    image: auth-service
+    image: ghcr.io/letsstreamit/profile-service:main
     container_name: auth-service
     restart: always
     environment:
@@ -47,9 +47,10 @@ services:
 
   profile-service:
     hostname: profile-service
-    image: profile-service
+    image: ghcr.io/letsstreamit/profile-service:main
     container_name: profile-service
     restart: always
     environment:
       PORT: 8080
+      AKKA_LICENSE_KEY: ${AKKA_LICENSE_KEY} # Set this in your .env file
       <<: *common-variables
