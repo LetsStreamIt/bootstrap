@@ -19,7 +19,7 @@ services:
   
   session-service:
     hostname: session-service
-    image: session-service
+    image: ghcr.io/letsstreamit/session-service:main
     container_name: session-service
     restart: always
     environment:
@@ -28,11 +28,11 @@ services:
  
   frontend-service:
     hostname: frontend-service
-    image: frontend-service
+    image: ghcr.io/letsstreamit/frontend-service:main
     container_name: frontend-service
     restart: always
     environment:
-      PORT: 80
+      PORT: 5173
       <<: *common-variables
 
   auth-service:
