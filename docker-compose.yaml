@@ -1,6 +1,8 @@
 x-common-variables: &common-variables
-  PROFILE_SERVICE_URI: http://profile-service:3001
-  AUTH_SERVICE_URI: http://auth-service:3000
+  PROFILE_SERVICE_HOSTNAME: profile-service
+  PROFILE_SERVICE_PORT: 3001
+  AUTH_SERVICE_HOSTNAME: auth-service
+  AUTH_SERVICE_PORT: 3000
 
 services:
   mongodb-service:
@@ -62,7 +64,8 @@ services:
     environment:
       PORT: 3000
       JWT_SECRET: ${JWT_SECRET} # Set this in your .env file
-      MONGO_URI: mongodb://mongodb-service:27017/auth-db
+      MONGO_HOSTNAME: mongodb-service
+      MONGO_PORT: 27017
       <<: *common-variables
 
   profile-service:
@@ -79,7 +82,8 @@ services:
       services-network:
     environment:
       PORT: 3001
-      MONGO_URI: mongodb://mongodb-service:27017/profile-db
+      MONGO_HOSTNAME: mongodb-service
+      MONGO_PORT: 27017
       AKKA_LICENSE_KEY: ${AKKA_LICENSE_KEY} # Set this in your .env file
       HOST: profile-service
       <<: *common-variables
