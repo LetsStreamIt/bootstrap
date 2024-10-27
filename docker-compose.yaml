@@ -6,6 +6,7 @@ services:
   mongodb-service:
     image: mongo:latest
     container_name: mongodb-service
+    hostname: mongodb-service
     restart: always
     networks:
       services-network:
@@ -19,6 +20,7 @@ services:
   session-service:
     image: ghcr.io/letsstreamit/session-service:main
     container_name: session-service
+    hostname: session-service
     restart: always
     networks:
       services-network:
@@ -27,11 +29,12 @@ services:
       <<: *common-variables
 
   frontend-service:
-    # image: ghcr.io/letsstreamit/frontend-service:main
-    build:
-      context: frontend-service
-      dockerfile: Dockerfile
+    image: ghcr.io/letsstreamit/frontend-service:main
+    # build:
+    #   context: frontend-service
+    #   dockerfile: Dockerfile
     container_name: frontend-service
+    hostname: frontend-service
     restart: always
     networks:
       services-network:
@@ -56,6 +59,7 @@ services:
     #   context: auth-service
     #   dockerfile: Dockerfile
     container_name: auth-service
+    hostname: auth-service
     restart: always
     ports:
       - "3000:3000"
@@ -68,14 +72,18 @@ services:
       <<: *common-variables
 
   profile-service:
-    image: ghcr.io/letsstreamit/profile-service:main
+    image: ghcr.io/letsstreamit/profile-service:latest
+    # build:
+    #   context: profile-service
+    #   dockerfile: target/docker/stage/Dockerfile
     depends_on:
       mongodb-service:
         condition: service_healthy
     container_name: profile-service
+    hostname: profile-service
     restart: always
     ports:
-      - "8080:8080"
+      - "8081:8080"
     networks:
       services-network:
     environment:
@@ -83,6 +91,8 @@ services:
       MONGO_URI: mongodb://mongodb-service:27017/profile-db
       AKKA_LICENSE_KEY: ${AKKA_LICENSE_KEY} # Set this in your .env file
       <<: *common-variables
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
 
 networks:
   services-network:
