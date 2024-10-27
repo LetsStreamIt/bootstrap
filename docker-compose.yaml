@@ -1,5 +1,5 @@
 x-common-variables: &common-variables
-  PROFILE_SERVICE_URI: http://profile-service:8080
+  PROFILE_SERVICE_URI: http://profile-service:3001
   AUTH_SERVICE_URI: http://auth-service:3000
 
 services:
@@ -30,9 +30,6 @@ services:
 
   frontend-service:
     image: ghcr.io/letsstreamit/frontend-service:main
-    # build:
-    #   context: frontend-service
-    #   dockerfile: Dockerfile
     container_name: frontend-service
     hostname: frontend-service
     restart: always
@@ -43,7 +40,7 @@ services:
     environment:
       PORT: 80
       VITE_PROFILE_SERVICE_HOSTNAME: profile-service
-      VITE_PROFILE_SERVICE_PORT: 8080
+      VITE_PROFILE_SERVICE_PORT: 3001
       VITE_AUTH_SERVICE_HOSTNAME: auth-service
       VITE_AUTH_SERVICE_PORT: 3000
       VITE_SESSION_SERVICE_HOSTNAME: session-service
@@ -55,9 +52,6 @@ services:
     depends_on:
       mongodb-service:
         condition: service_healthy
-    # build:
-    #   context: auth-service
-    #   dockerfile: Dockerfile
     container_name: auth-service
     hostname: auth-service
     restart: always
@@ -73,9 +67,6 @@ services:
 
   profile-service:
     image: ghcr.io/letsstreamit/profile-service:latest
-    # build:
-    #   context: profile-service
-    #   dockerfile: target/docker/stage/Dockerfile
     depends_on:
       mongodb-service:
         condition: service_healthy
@@ -83,17 +74,17 @@ services:
     hostname: profile-service
     restart: always
     ports:
-      - "8081:8080"
+      - "3001:3001"
     networks:
       services-network:
     environment:
-      PORT: 8080
+      PORT: 3001
       MONGO_URI: mongodb://mongodb-service:27017/profile-db
       AKKA_LICENSE_KEY: ${AKKA_LICENSE_KEY} # Set this in your .env file
+      HOST: profile-service
       <<: *common-variables
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
 
 networks:
   services-network:
-    driver: bridge
