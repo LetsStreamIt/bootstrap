@@ -1,56 +1,89 @@
 x-common-variables: &common-variables
-    MONGO_URI: mongodb://localhost:27017/
-    JWT_SECRET: supersecret
-    PROFILE_SERVICE_URI: http://profile-service:8080
-    AUTH_SERVICE_URI: http://profile-service:3000
+  PROFILE_SERVICE_URI: http://profile-service:8080
+  AUTH_SERVICE_URI: http://auth-service:3000
 
 services:
   mongodb-service:
-    hostname: mongodb-service
     image: mongo:latest
-    container_name: mongodb
+    container_name: mongodb-service
     restart: always
+    networks:
+      services-network:
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - ./data/db:/data/db
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-  
+
   session-service:
-    hostname: session-service
     image: ghcr.io/letsstreamit/session-service:main
     container_name: session-service
     restart: always
+    networks:
+      services-network:
     environment:
       PORT: 4000
       <<: *common-variables
- 
+
   frontend-service:
-    hostname: frontend-service
-    image: ghcr.io/letsstreamit/frontend-service:main
+    # image: ghcr.io/letsstreamit/frontend-service:main
+    build:
+      context: frontend-service
+      dockerfile: Dockerfile
     container_name: frontend-service
     restart: always
+    networks:
+      services-network:
+    ports:
+      - "80:80"
     environment:
-      PORT: 5173
-      <<: *common-variables
+      PORT: 80
+      VITE_PROFILE_SERVICE_HOSTNAME: profile-service
+      VITE_PROFILE_SERVICE_PORT: 8080
+      VITE_AUTH_SERVICE_HOSTNAME: auth-service
+      VITE_AUTH_SERVICE_PORT: 3000
+      VITE_SESSION_SERVICE_HOSTNAME: session-service
+      VITE_SESSION_SERVICE_PORT: 4000
+      VITE_YOUTUBE_API_KEY: ${YOUTUBE_API_KEY} # Set this in your .env file
 
   auth-service:
-    hostname: auth-service
-    image: ghcr.io/letsstreamit/profile-service:main
+    image: ghcr.io/letsstreamit/auth-service:main
+    depends_on:
+      mongodb-service:
+        condition: service_healthy
+    # build:
+    #   context: auth-service
+    #   dockerfile: Dockerfile
     container_name: auth-service
     restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      services-network:
     environment:
       PORT: 3000
+      JWT_SECRET: ${JWT_SECRET} # Set this in your .env file
+      MONGO_URI: mongodb://mongodb-service:27017/auth-db
       <<: *common-variables
-
 
   profile-service:
-    hostname: profile-service
     image: ghcr.io/letsstreamit/profile-service:main
+    depends_on:
+      mongodb-service:
+        condition: service_healthy
     container_name: profile-service
     restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      services-network:
     environment:
       PORT: 8080
+      MONGO_URI: mongodb://mongodb-service:27017/profile-db
       AKKA_LICENSE_KEY: ${AKKA_LICENSE_KEY} # Set this in your .env file
       <<: *common-variables
+
+networks:
+  services-network:
+    driver: bridge
