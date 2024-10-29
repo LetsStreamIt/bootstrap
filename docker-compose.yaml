@@ -3,6 +3,8 @@ x-common-variables: &common-variables
   PROFILE_SERVICE_PORT: 3001
   AUTH_SERVICE_HOSTNAME: auth-service
   AUTH_SERVICE_PORT: 3000
+  SESSION_SERVICE_HOSTNAME: session-service
+  SESSION_SERVICE_PORT: 4000
 
 services:
   mongodb-service:
@@ -10,10 +12,6 @@ services:
     container_name: mongodb-service
     hostname: mongodb-service
     restart: always
-    networks:
-      services-network:
-    ports:
-      - "27018:27017"
     volumes:
       - ./data/db:/data/db
     healthcheck:
@@ -24,10 +22,7 @@ services:
     container_name: session-service
     hostname: session-service
     restart: always
-    networks:
-      services-network:
     environment:
-      PORT: 4000
       <<: *common-variables
 
   frontend-service:
@@ -35,19 +30,15 @@ services:
     container_name: frontend-service
     hostname: frontend-service
     restart: always
-    networks:
-      services-network:
     ports:
       - "80:80"
+    depends_on:
+      auth-service:
+        condition: service_healthy
     environment:
       PORT: 80
-      VITE_PROFILE_SERVICE_HOSTNAME: profile-service
-      VITE_PROFILE_SERVICE_PORT: 3001
-      VITE_AUTH_SERVICE_HOSTNAME: auth-service
-      VITE_AUTH_SERVICE_PORT: 3000
-      VITE_SESSION_SERVICE_HOSTNAME: session-service
-      VITE_SESSION_SERVICE_PORT: 4000
       VITE_YOUTUBE_API_KEY: ${YOUTUBE_API_KEY} # Set this in your .env file
+      <<: *common-variables
 
   auth-service:
     image: ghcr.io/letsstreamit/auth-service:main
@@ -57,16 +48,14 @@ services:
     container_name: auth-service
     hostname: auth-service
     restart: always
-    ports:
-      - "3000:3000"
-    networks:
-      services-network:
     environment:
       PORT: 3000
       JWT_SECRET: ${JWT_SECRET} # Set this in your .env file
       MONGO_HOSTNAME: mongodb-service
       MONGO_PORT: 27017
       <<: *common-variables
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthcheck"]
 
   profile-service:
     image: ghcr.io/letsstreamit/profile-service:latest
@@ -76,10 +65,6 @@ services:
     container_name: profile-service
     hostname: profile-service
     restart: always
-    ports:
-      - "3001:3001"
-    networks:
-      services-network:
     environment:
       PORT: 3001
       MONGO_HOSTNAME: mongodb-service
@@ -89,6 +74,3 @@ services:
       <<: *common-variables
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
-
-networks:
-  services-network:
