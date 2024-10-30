@@ -4,7 +4,7 @@
 
 The bootstrap of the project.
 
-The bootstrap repository allows you to deploy the the *Let's Stream It* microservices at once: [`session-service`](https://github.com/LetsStreamIt/session-service), [`auth-service`](https://github.com/LetsStreamIt/auth-service), [`profile-service`](https://github.com/LetsStreamIt/profile-service), [`frontend-service`](https://github.com/LetsStreamIt/frontend-service).
+The bootstrap repository allows you to deploy *Let's Stream It* microservices at once: [`session-service`](https://github.com/LetsStreamIt/session-service), [`auth-service`](https://github.com/LetsStreamIt/auth-service), [`profile-service`](https://github.com/LetsStreamIt/profile-service), [`frontend-service`](https://github.com/LetsStreamIt/frontend-service).
 
 
 ## Prerequisites
@@ -20,10 +20,11 @@ The bootstrap repository allows you to deploy the the *Let's Stream It* microser
 
 2. Create a `.env` file in the root directory of the project with the following variables:
     1. `AKKA_LICENSE_KEY`: License key used by [`profile-service`](https://github.com/LetsStreamIt/profile-service). It is possible to generate a new key at https://akka.io/key;
-    2. `JWT_SECRET`: Secret used to create tokens inside [`auth-service`](https://github.com/LetsStreamIt/auth-service). To generate a random secret, run the following command (if you have NodeJs installed):
+    2. `JWT_SECRET`: Secret used to create tokens inside [`auth-service`](https://github.com/LetsStreamIt/auth-service). To generate a random secret, run the following command if you have NodeJs installed:
         ```bash
         node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
         ```
+        Alternatively, either use another program to generate a random secret or choose one strong enough.
     3. `YOUTUBE_API_KEY`: Youtube API key. Follow the steps listed at https://developers.google.com/youtube/v3/getting-started to generate it.
 
 
