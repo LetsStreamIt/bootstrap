@@ -4,6 +4,10 @@ import { test } from './email';
 let isRegistered = false;
 
 test.describe.serial('User workflows', () => {
+  
+  /**
+   * The User can register to the system.
+   */
   test('registration', async ({ page, email }) => {
     await page.goto('http://localhost/');
     await expect(page.locator('#app')).toContainText('LetsStreamIt'); // check if the app is running
@@ -22,6 +26,9 @@ test.describe.serial('User workflows', () => {
     isRegistered = true;
   });
 
+  /**
+   * The user can login to the system, once the registration is completed.
+   */
   test.beforeEach(async ({ page, email }) => {
     if (isRegistered) {
       await page.goto('http://localhost/'); // go to the homepage
@@ -34,10 +41,19 @@ test.describe.serial('User workflows', () => {
     }
   });
 
+  /**
+   * The user can logout from the system, if he's logged in.
+   */
   test('login', async ({ page }) => {
     await expect(page.getByRole('button')).toContainText('Logout'); // check if the user is logged in
   });
 
+  /**
+   * The user can:
+   * 1. Successfully create a streaming session, if the provided Youtube video URL is correct;
+   * 2. Join the created streaming session, through an automatic redirection to the dedicated page (taken over by the frontend service);
+   * 3. Send a message to the session chat
+   */
   test('session', async ({ page }) => {
     await page.getByText('Create a Streaming Session').click(); // click on create a session
     await expect(page.locator('form')).toContainText('Create Session'); // check that the create session popup is open
@@ -47,6 +63,9 @@ test.describe.serial('User workflows', () => {
     await page.getByRole('button', { name: 'Send Message' }).click(); // click on send message
   });
 
+  /**
+   * The user can update its profile page
+   */
   test('profile', async ({ page }) => {
     await page.getByRole('link', { name: 'Profile' }).click(); // click on profile
     await page.getByLabel('Bio').fill('bio'); // fill the form
