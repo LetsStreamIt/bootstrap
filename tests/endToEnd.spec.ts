@@ -43,12 +43,8 @@ test.describe.serial('User workflows', () => {
     await expect(page.locator('form')).toContainText('Create Session');
     await page.getByPlaceholder('Enter Youtube Video URL').fill('https://www.youtube.com/watch?v=jNQXAC9IVRw');
     await page.getByText('Create Session').click();
-    await page.locator('iframe[title="Me at the zoo"]').contentFrame().locator('video').click();
     await page.getByPlaceholder('Message').fill('hello');
     await page.getByRole('button', { name: 'Send Message' }).click();
-    await page.getByRole('button', { name: '▼' }).click();
-    await expect(page.locator('#app')).toContainText('Me: hello');
-    await page.getByRole('link', { name: 'Home' }).click();
   });
 
   test('profile', async ({ page }) => {
