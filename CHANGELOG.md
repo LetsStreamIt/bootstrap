@@ -1,0 +1,25 @@
+## 1.0.0 (2024-11-09)
+
+### Features
+
+* add end to end tests ([#1](https://github.com/LetsStreamIt/bootstrap/issues/1)) ([f9231cd](https://github.com/LetsStreamIt/bootstrap/commit/f9231cd096ae9aac769130a266fddb3c239ddb5b))
+
+### Documentation
+
+* refine readme ([1eec6ee](https://github.com/LetsStreamIt/bootstrap/commit/1eec6ee204343651362768679521dcd4bc4a452d))
+* update readme ([4e82376](https://github.com/LetsStreamIt/bootstrap/commit/4e823761a24226ba28416121e0c7c314939b7c71))
+
+### General maintenance
+
+* add profile and auth services ([3bf6cb7](https://github.com/LetsStreamIt/bootstrap/commit/3bf6cb7b183c65ec5095136c68473cddb1e04e29))
+* change env variables name to convention ([61b5867](https://github.com/LetsStreamIt/bootstrap/commit/61b586750f0fa72a77afe272fdf70837233e3f5d))
+* complete configuration for profile service ([14d8269](https://github.com/LetsStreamIt/bootstrap/commit/14d8269494918643d996d49923737323e31380bd))
+* grouped togheter common env variables ([5fd5d67](https://github.com/LetsStreamIt/bootstrap/commit/5fd5d67c1386397bc85c4c7d4bc203f212d2a006))
+* now auth service is working ([27fb9ea](https://github.com/LetsStreamIt/bootstrap/commit/27fb9ea3fceefbd7c76f9c7027a2a5feb33fb7d1))
+* remove metals folder ([2fd5d4d](https://github.com/LetsStreamIt/bootstrap/commit/2fd5d4d530f1cb6cb51237b35ef8613cca6815c1))
+* update compose file ([7925f0c](https://github.com/LetsStreamIt/bootstrap/commit/7925f0c28948888a59747f6f81fd44ace9bff858))
+* update docker-compose for auth and profile services ([9b97d20](https://github.com/LetsStreamIt/bootstrap/commit/9b97d2006343b5616921366f4c36b69174312d47))
+* update docker-compose for frontend and profile services ([cc2d4ca](https://github.com/LetsStreamIt/bootstrap/commit/cc2d4cac5054b1291ff78813160306e8c44650f1))
+* update services deps ([5d787f9](https://github.com/LetsStreamIt/bootstrap/commit/5d787f998f95b981937094d3f8742443895fd445))
+* upload gitignore and initial docker compose ([349851a](https://github.com/LetsStreamIt/bootstrap/commit/349851a6c601d3928978dffa2e975f12667f7c7f))
+* working frontend service ([04784a5](https://github.com/LetsStreamIt/bootstrap/commit/04784a5cd72ae42a6c77118aa5d4c7e60869bbe6))
