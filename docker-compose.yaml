@@ -10,7 +10,7 @@ x-common-variables: &common-variables
 
 services:
   mongodb-service:
-    image: mongo:latest
+    image: mongo:3984cf5a234e525253619060fcbff12449db0597d62a6d4e18991a18f2365c36
     container_name: mongodb-service
     hostname: mongodb-service
     restart: always
@@ -20,7 +20,7 @@ services:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
 
   session-service:
-    image: ghcr.io/letsstreamit/session-service:main
+    image: ghcr.io/letsstreamit/session-service:53d75742738957fc0d648322fd55876d1c4b95485cc24a352232fbb0782025a8
     container_name: session-service
     hostname: session-service
     restart: always
@@ -33,7 +33,7 @@ services:
       <<: *common-variables
 
   frontend-service:
-    image: ghcr.io/letsstreamit/frontend-service:main
+    image: ghcr.io/letsstreamit/frontend-service:0e36a2b4327d3c932bf2ea6f61173ef6d980b4aaf86a3d06202de1b7caf8b2bc
     container_name: frontend-service
     hostname: frontend-service
     restart: always
@@ -47,9 +47,11 @@ services:
     environment:
       VITE_YOUTUBE_API_KEY: ${YOUTUBE_API_KEY} # Set this in your .env file
       <<: *common-variables
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
 
   auth-service:
-    image: ghcr.io/letsstreamit/auth-service:main
+    image: ghcr.io/letsstreamit/auth-service:76a64960d347d06a1ff59e1c9809107eb32e47b25fe26e0b32df2f24f7755821
     depends_on:
       mongodb-service:
         condition: service_healthy
@@ -63,7 +65,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:3000/healthcheck"]
 
   profile-service:
-    image: ghcr.io/letsstreamit/profile-service:latest
+    image: ghcr.io/letsstreamit/profile-service:060a24740886239ab761a23e33ca05bbea82d473a9d2e2ec3a0216a2c61aaf4d
     depends_on:
       mongodb-service:
         condition: service_healthy
