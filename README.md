@@ -1,8 +1,11 @@
 # Bootstrap
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Version](https://img.shields.io/github/v/release/letsstreamit/bootstrap?style=plastic)
 
 The bootstrap of the project.
+
+This repository contains the latest reproducible version of the *Let's Stream It* project.
 
 The bootstrap repository allows you to deploy *Let's Stream It* microservices at once: [`session-service`](https://github.com/LetsStreamIt/session-service), [`auth-service`](https://github.com/LetsStreamIt/auth-service), [`profile-service`](https://github.com/LetsStreamIt/profile-service), [`frontend-service`](https://github.com/LetsStreamIt/frontend-service).
 
