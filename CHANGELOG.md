@@ -1,3 +1,17 @@
+## [1.0.2](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.1...v1.0.2) (2024-11-10)
+
+### Dependency updates
+
+* **core-deps:** update ghcr.io/letsstreamit/frontend-service:main docker digest to 955f2d9 ([#6](https://github.com/LetsStreamIt/bootstrap/issues/6)) ([f845a1a](https://github.com/LetsStreamIt/bootstrap/commit/f845a1a593ce18ec524a50783c9c25020e0c6e0b))
+
+### Build and continuous integration
+
+* change when to run build-and-deploy ([3fd592b](https://github.com/LetsStreamIt/bootstrap/commit/3fd592bca9412268fffd54970551de76b097357a))
+
+### General maintenance
+
+* update readme ([0931b9e](https://github.com/LetsStreamIt/bootstrap/commit/0931b9e1a18f09a02dfda3e693f7cd426b673894))
+
 ## [1.0.1](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.0...v1.0.1) (2024-11-10)
 
 ### Bug Fixes
