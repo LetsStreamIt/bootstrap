@@ -10,7 +10,7 @@ x-common-variables: &common-variables
 
 services:
   mongodb-service:
-    image: mongo@sha256:3984cf5a234e525253619060fcbff12449db0597d62a6d4e18991a18f2365c36
+    image: mongo:latest@sha256:3984cf5a234e525253619060fcbff12449db0597d62a6d4e18991a18f2365c36
     container_name: mongodb-service
     hostname: mongodb-service
     restart: always
@@ -20,7 +20,7 @@ services:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
 
   session-service:
-    image: ghcr.io/letsstreamit/session-service@sha256:53d75742738957fc0d648322fd55876d1c4b95485cc24a352232fbb0782025a8
+    image: ghcr.io/letsstreamit/session-service:main@sha256:53d75742738957fc0d648322fd55876d1c4b95485cc24a352232fbb0782025a8
     container_name: session-service
     hostname: session-service
     restart: always
@@ -33,7 +33,7 @@ services:
       <<: *common-variables
 
   frontend-service:
-    image: ghcr.io/letsstreamit/frontend-service@sha256:0e36a2b4327d3c932bf2ea6f61173ef6d980b4aaf86a3d06202de1b7caf8b2bc
+    image: ghcr.io/letsstreamit/frontend-service:main@sha256:0e36a2b4327d3c932bf2ea6f61173ef6d980b4aaf86a3d06202de1b7caf8b2bc
     container_name: frontend-service
     hostname: frontend-service
     restart: always
@@ -51,7 +51,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost/"]
 
   auth-service:
-    image: ghcr.io/letsstreamit/auth-service@sha256:76a64960d347d06a1ff59e1c9809107eb32e47b25fe26e0b32df2f24f7755821
+    image: ghcr.io/letsstreamit/auth-service:main@sha256:76a64960d347d06a1ff59e1c9809107eb32e47b25fe26e0b32df2f24f7755821
     depends_on:
       mongodb-service:
         condition: service_healthy
@@ -65,7 +65,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:3000/healthcheck"]
 
   profile-service:
-    image: ghcr.io/letsstreamit/profile-service@sha256:060a24740886239ab761a23e33ca05bbea82d473a9d2e2ec3a0216a2c61aaf4d
+    image: ghcr.io/letsstreamit/profile-service:latest@sha256:060a24740886239ab761a23e33ca05bbea82d473a9d2e2ec3a0216a2c61aaf4d
     depends_on:
       mongodb-service:
         condition: service_healthy
