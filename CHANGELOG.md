@@ -1,3 +1,13 @@
+## [1.0.1](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.0...v1.0.1) (2024-11-10)
+
+### Bug Fixes
+
+* add version label to digest ([af468c1](https://github.com/LetsStreamIt/bootstrap/commit/af468c122fe5a894150cbdb881059d79590100f3))
+
+### Build and continuous integration
+
+* **deps:** update hoverkraft-tech/compose-action action to v2.0.2 ([b5418d7](https://github.com/LetsStreamIt/bootstrap/commit/b5418d7b41206c08dfbfa98e40230ccfed9df71c))
+
 ## 1.0.0 (2024-11-09)
 
 ### Features
