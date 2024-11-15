@@ -10,7 +10,7 @@ x-common-variables: &common-variables
 
 services:
   mongodb-service:
-    image: mongo:latest@sha256:3984cf5a234e525253619060fcbff12449db0597d62a6d4e18991a18f2365c36
+    image: mongo:latest@sha256:05aeeb4cb12639aa6244eaecbfff6745a40ac564af58e6e9f4ea1b178a1daf2b
     container_name: mongodb-service
     hostname: mongodb-service
     restart: always
