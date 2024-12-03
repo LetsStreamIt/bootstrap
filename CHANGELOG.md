@@ -1,3 +1,9 @@
+## [1.0.6](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.5...v1.0.6) (2024-12-03)
+
+### Dependency updates
+
+* **core-deps:** update mongo:latest docker digest to 8565ecd ([#18](https://github.com/LetsStreamIt/bootstrap/issues/18)) ([0c3a5f1](https://github.com/LetsStreamIt/bootstrap/commit/0c3a5f1634b2877c325f573da8455ef95b518aff))
+
 ## [1.0.5](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.4...v1.0.5) (2024-12-03)
 
 ### Dependency updates
