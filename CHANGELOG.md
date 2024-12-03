@@ -1,3 +1,16 @@
+## [1.0.5](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.4...v1.0.5) (2024-12-03)
+
+### Dependency updates
+
+* **core-deps:** update mongo:latest docker digest to bdd5590 ([#17](https://github.com/LetsStreamIt/bootstrap/issues/17)) ([9c27b35](https://github.com/LetsStreamIt/bootstrap/commit/9c27b35cd77b88b60503f5cb4b9f2dffdebde758))
+* **deps:** update dependency @playwright/test to v1.49.0 ([#10](https://github.com/LetsStreamIt/bootstrap/issues/10)) ([737db9c](https://github.com/LetsStreamIt/bootstrap/commit/737db9cf92c001e44622e3de3ad06707c1cd97d4))
+* **deps:** update dependency @types/node to v22.10.0 ([#15](https://github.com/LetsStreamIt/bootstrap/issues/15)) ([6772ac4](https://github.com/LetsStreamIt/bootstrap/commit/6772ac46205583b99fa6cbb853a4bde92a51325c))
+* **deps:** update dependency @types/node to v22.10.1 ([#16](https://github.com/LetsStreamIt/bootstrap/issues/16)) ([2bb7b84](https://github.com/LetsStreamIt/bootstrap/commit/2bb7b84404cdbb40eb0873b606055621fe5dba31))
+* **deps:** update dependency @types/node to v22.9.1 ([#11](https://github.com/LetsStreamIt/bootstrap/issues/11)) ([950608a](https://github.com/LetsStreamIt/bootstrap/commit/950608ac353f8601027ddc24ec25f06a17925243))
+* **deps:** update dependency @types/node to v22.9.2 ([#12](https://github.com/LetsStreamIt/bootstrap/issues/12)) ([f208696](https://github.com/LetsStreamIt/bootstrap/commit/f208696fc3872f207c44a277223418c608f60737))
+* **deps:** update dependency @types/node to v22.9.3 ([#13](https://github.com/LetsStreamIt/bootstrap/issues/13)) ([d70af82](https://github.com/LetsStreamIt/bootstrap/commit/d70af82e96741afa62cf0744d1b341e3623da776))
+* **deps:** update dependency @types/node to v22.9.4 ([#14](https://github.com/LetsStreamIt/bootstrap/issues/14)) ([1dd21f5](https://github.com/LetsStreamIt/bootstrap/commit/1dd21f5bc379b142e83358ef1aac19c7743f2034))
+
 ## [1.0.4](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.3...v1.0.4) (2024-11-16)
 
 ### Dependency updates
