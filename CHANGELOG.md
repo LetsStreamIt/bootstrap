@@ -1,3 +1,11 @@
+## [1.0.7](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.6...v1.0.7) (2024-12-12)
+
+### Dependency updates
+
+* **core-deps:** update mongo:latest docker digest to 443df9f ([#20](https://github.com/LetsStreamIt/bootstrap/issues/20)) ([ecc84ea](https://github.com/LetsStreamIt/bootstrap/commit/ecc84eab26af1f2cc729aa6cebfbf947a95a757b))
+* **core-deps:** update mongo:latest docker digest to 4f93a84 ([#21](https://github.com/LetsStreamIt/bootstrap/issues/21)) ([d30dcb3](https://github.com/LetsStreamIt/bootstrap/commit/d30dcb3b5ec1830d22e048a796d48ce17b2cabd0))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.116 ([#19](https://github.com/LetsStreamIt/bootstrap/issues/19)) ([cce9db1](https://github.com/LetsStreamIt/bootstrap/commit/cce9db16b8a0afeadbbccf7b96f5ca311c50a40c))
+
 ## [1.0.6](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.5...v1.0.6) (2024-12-03)
 
 ### Dependency updates
