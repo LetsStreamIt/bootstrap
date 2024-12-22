@@ -10,6 +10,6 @@
   "devDependencies": {
     "@playwright/test": "^1.48.2",
     "@types/node": "^22.9.0",
-    "semantic-release-preconfigured-conventional-commits": "1.1.116"
+    "semantic-release-preconfigured-conventional-commits": "1.1.117"
   }
 }
