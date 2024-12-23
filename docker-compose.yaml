@@ -33,7 +33,7 @@ services:
       <<: *common-variables
 
   frontend-service:
-    image: ghcr.io/letsstreamit/frontend-service:main@sha256:955f2d985220ec725caa24bcbda44d14713c41293a2cbd6e915d9d41f3ef20e4
+    image: ghcr.io/letsstreamit/frontend-service:main@sha256:1e01f933fdfa779abff5f3cc0ad7490a9564e301e869d8de4dbe7843cb0b3c4b
     container_name: frontend-service
     hostname: frontend-service
     restart: always
