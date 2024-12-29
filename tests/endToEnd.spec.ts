@@ -4,7 +4,7 @@ import { test } from './email';
 let isRegistered = false;
 
 test.describe.serial('User workflows', () => {
-  
+
   /**
    * The User can register to the system.
    */
@@ -34,7 +34,7 @@ test.describe.serial('User workflows', () => {
       await page.goto('http://localhost/'); // go to the homepage
       await page.getByRole('link', { name: 'Login' }).click(); // click on login
       await page.getByPlaceholder('Email').fill(email); // fill the form
-      await page.getByPlaceholder('Password').fill('Password1!'); 
+      await page.getByPlaceholder('Password').fill('Password1!');
       await page.getByRole('button', { name: 'Sign In' }).click(); // click on sign in
       await page.waitForTimeout(5000); // Wait for redirect to homepage
       await expect(page).toHaveURL('http://localhost/'); // check if the user is redirected to homepage
@@ -45,7 +45,7 @@ test.describe.serial('User workflows', () => {
    * The user can logout from the system, if he's logged in.
    */
   test('login', async ({ page }) => {
-    await expect(page.getByRole('button')).toContainText('Logout'); // check if the user is logged in
+    await expect(page.getByRole('button', { name: 'Logout' })).toContainText('Logout'); // check if the user is logged in
   });
 
   /**
