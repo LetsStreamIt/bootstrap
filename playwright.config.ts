@@ -35,10 +35,10 @@ export default defineConfig<TestOptions>({
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'], email: 'chrome@example.it' },
-    // },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'], email: 'chrome@example.it' },
+    },
 
     {
       name: 'firefox',
