@@ -1,3 +1,17 @@
+## [1.0.8](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.7...v1.0.8) (2024-12-29)
+
+### Dependency updates
+
+* **core-deps:** update ghcr.io/letsstreamit/frontend-service:main docker digest to afdfb5c ([#24](https://github.com/LetsStreamIt/bootstrap/issues/24)) ([1165895](https://github.com/LetsStreamIt/bootstrap/commit/11658957c110b79f93a28f6f946f22066f55c8e8))
+* **deps:** update dependency @playwright/test to v1.49.1 ([#22](https://github.com/LetsStreamIt/bootstrap/issues/22)) ([d0fa230](https://github.com/LetsStreamIt/bootstrap/commit/d0fa230dda8545917b5e9e5182d77df0bec6fe53))
+* **deps:** update dependency @types/node to v22.10.2 ([#23](https://github.com/LetsStreamIt/bootstrap/issues/23)) ([bb29858](https://github.com/LetsStreamIt/bootstrap/commit/bb29858859ff953476f03c2e4ff5a02ecdc084c7))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.117 ([#25](https://github.com/LetsStreamIt/bootstrap/issues/25)) ([76e7905](https://github.com/LetsStreamIt/bootstrap/commit/76e7905195fe52dd2bb28bbb9a14e9e80e0cafe8))
+
+### Tests
+
+* fix get button conflict ([f1a86df](https://github.com/LetsStreamIt/bootstrap/commit/f1a86dff61cef6022cbbb1563cd1225058545f4a))
+* remove chromium test ([b199496](https://github.com/LetsStreamIt/bootstrap/commit/b1994961f6c2b26f9be6ec9fcb34c73222d883b2))
+
 ## [1.0.7](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.6...v1.0.7) (2024-12-12)
 
 ### Dependency updates
