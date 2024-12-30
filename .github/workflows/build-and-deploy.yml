@@ -39,19 +39,37 @@ jobs:
       packages: write
     concurrency:
       # Only one release job at a time. Strictly sequential.
-      group: release
+      group: release-${{ github.event.number || github.ref }}
     runs-on: ubuntu-latest
     needs:
       - test
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: false
+
       - uses: actions/setup-node@v4.1.0
         with:
           cache: npm
           node-version: lts/*
-      - run: npm clean-install
+      - run: HUSKY=0 npm ci
       - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npx semantic-release
+
+  success:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+      - release
+    if: >-
+      always() && (
+        contains(join(needs.*.result, ','), 'failure')
+        || !contains(join(needs.*.result, ','), 'cancelled')
+      )
+    steps:
+      - name: Verify that there were no failures
+        run: ${{ !contains(join(needs.*.result, ','), 'failure') }}
+
