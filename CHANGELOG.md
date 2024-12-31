@@ -1,3 +1,13 @@
+## [1.0.9](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.8...v1.0.9) (2024-12-31)
+
+### Revert previous changes
+
+* Revert "test: remove chromium test" ([ab6e493](https://github.com/LetsStreamIt/bootstrap/commit/ab6e493cb564c70d8e62a7b59dc337b50c65f615))
+
+### Build and continuous integration
+
+* add semantic release push permissions ([91fc07c](https://github.com/LetsStreamIt/bootstrap/commit/91fc07cd75a12e0ac0c7f270016b054889f28843))
+
 ## [1.0.8](https://github.com/LetsStreamIt/bootstrap/compare/v1.0.7...v1.0.8) (2024-12-29)
 
 ### Dependency updates
